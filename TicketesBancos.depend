@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1396496214 source:c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\ticketesbancos\main.cpp
+	<iostream>
+	"Node.h"
+	"LinkedList.h"
+	"Queue.h"
+
+1394484626 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\ticketesbancos\include\node.h
+
+1396494410 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\ticketesbancos\include\linkedlist.h
+	"Node.h"
+	<stdexcept>
+
+1396496251 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\ticketesbancos\include\queue.h
+	"Node.h"
+	<stdexcept>
+
