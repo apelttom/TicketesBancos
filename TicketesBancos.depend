@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1396496214 source:c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\ticketesbancos\main.cpp
+1396496393 source:c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\ticketesbancos\main.cpp
 	<iostream>
 	"Node.h"
 	"LinkedList.h"
