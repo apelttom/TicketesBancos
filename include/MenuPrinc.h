@@ -125,7 +125,7 @@ class MenuPrinc
         system("cls");
         string opcDV;
         cout << "Usted se encuentra en el menu para definir tipos de ventanas." << endl;
-        cout << "Por favor. Digite el número de la opcion que desea: " << endl;
+        cout << "Por favor. Digite la letra de la opcion que desea: " << endl;
         cout << "   a. Agregar un nuevo tipo de ventanilla." << endl;
         cout << "   b. Eliminar un tipo de ventanilla" << endl;
         cin >> opcDV;
@@ -154,7 +154,7 @@ class MenuPrinc
         system("cls");
         string opcDS;
         cout << "Usted se encuentra en el menu para definir servicios disponibles." << endl;
-        cout << "Por favor. Digite el número de la opcion que desea: " << endl;
+        cout << "Por favor. Digite la letra de la opcion que desea: " << endl;
         cout << "   a. Agregar un nuevo tipo de servicio." << endl;
         cout << "   b. Eliminar un tipo de servicio." << endl;
         cout << "   c. Reordenar." << endl;
@@ -193,6 +193,56 @@ class MenuPrinc
     void menuStats()
     {
         system("cls");
+        string opcStats;
+        cout << "Usted se encuentra en el menu de administracion." << endl;
+        cout << "Por favor. Digite la letra de la opcion que desea: " << endl;
+        cout << "   a. Tiempo promedio de espera por tipo de ventanilla" << endl;
+        cout << "   b. Total de tiquetes dispensados por tipo de ventanilla" << endl;
+        cout << "   c. Total de tiquetes atendidos por ventanilla" << endl;
+        cout << "   d. Total de tiquetes dispensados por tipo de transacción" << endl;
+        cout << "   e. Total de tiquetes preferenciales dispensados en todo el sistema" << endl;
+        cin >> opcStats;
+        if (opcStats != "a" && opcStats != "A" && opcStats != "b" && opcStats != "B" && opcStats != "c" && opcStats != "C"
+            && opcStats != "d" && opcStats != "D" && opcStats != "e" && opcStats != "E")
+        {
+            cout << "Por favor digite una opcion valida" << endl;
+            menuStats();
+        }
+        else
+        {
+            if (opcStats == "a" || opcStats == "A")
+            {
+                cout << "Tiempo promedio de espera por tipo de ventanilla" << endl;
+            }
+            else
+            {
+                if (opcStats == "b" || opcStats == "B")
+                {
+                    cout << "Total de tiquetes dispensados por tipo de ventanilla" << endl;
+                }
+                else
+                {
+                    if (opcStats == "c" || opcStats == "C")
+                    {
+                        cout << "Total de tiquetes atendidos por ventanilla" << endl;
+                    }
+                    else
+                    {
+                        if (opcStats == "d" || opcStats == "D")
+                        {
+                            cout << "Total de tiquetes dispensados por tipo de transacción" << endl;
+                        }
+                        else
+                        {
+                            if (opcStats == "e" || opcStats == "E")
+                            {
+                                cout << "Total de tiquetes preferenciales dispensados en todo el sistema" << endl;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 };
 
