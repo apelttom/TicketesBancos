@@ -35,6 +35,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/LinkedList.h" />
+		<Unit filename="include/MenuPrinc.h" />
 		<Unit filename="include/Node.h" />
 		<Unit filename="include/Queue.h" />
 		<Unit filename="main.cpp" />

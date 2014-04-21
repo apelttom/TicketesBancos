@@ -2,6 +2,9 @@
 #include "Node.h"
 #include "LinkedList.h"
 #include "Queue.h"
+#include "MenuPrinc.h"
+#include <stdio.h>
+#include <string.h>
 
 using namespace std;
 
@@ -10,7 +13,7 @@ int main()
     // Here we will start our application
     cout << "Hello world!" << endl;
     // Probamos crear una lista
-        cout << endl;
+    cout << endl;
     cout << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" << endl;
     cout << endl;
     cout << "Prueba de operaciones de lista " << endl;
@@ -38,6 +41,10 @@ int main()
     cout << cola->getFrontValue()<< endl;
     cout << "Imprimir cola " << endl;
     cola->imprimirCola();
-    //cola->imprimirCola();
+
+    // prueba de menu princ
+    MenuPrinc * tmp = new MenuPrinc();
+    tmp->menuPrin();
+
     return 0;
 }
