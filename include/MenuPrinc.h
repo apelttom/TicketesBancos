@@ -1,6 +1,7 @@
 #ifndef MENUPRINC_H
 #define MENUPRINC_H
 
+#include "TipoVentanilla.h"
 
 class MenuPrinc
 {
@@ -38,7 +39,6 @@ class MenuPrinc
                     cout << "Debe mostrar los tipos de ventanillas existentes, la cantidad de 	ventanillas definidas para cada tipo y los códigos de los tiquetes presentes en las diferentes colas." << endl;
                     break;
                 case 2:
-                    cout << "tiq" << endl;
                     menuSolicTiquet();
                     break;
                 case 3:
@@ -98,8 +98,9 @@ class MenuPrinc
         cout << "Por favor. Digite la letra de la opcion que desea: " << endl;
         cout << "   a. Definir tipos de ventanillas" << endl;
         cout << "   b. Definir servicios disponibles" << endl;
+        cout << "   c. Volver al Menu Principal" << endl;
         cin >> opcAD;
-        if (opcAD != "a" && opcAD != "A" && opcAD != "b" && opcAD != "B")
+        if (opcAD != "a" && opcAD != "A" && opcAD != "b" && opcAD != "B" && opcAD != "c" && opcAD != "C")
         {
             cout << "Por favor digite una opcion valida" << endl;
             menuAdmin();
@@ -116,6 +117,13 @@ class MenuPrinc
                 {
                     menuDefServic();
                 }
+                else
+                {
+                    if (opcAD == "c" || opcAD == "C")
+                    {
+                        menuPrin();
+                    }
+                }
             }
         }
     }
@@ -128,8 +136,9 @@ class MenuPrinc
         cout << "Por favor. Digite la letra de la opcion que desea: " << endl;
         cout << "   a. Agregar un nuevo tipo de ventanilla." << endl;
         cout << "   b. Eliminar un tipo de ventanilla" << endl;
+        cout << "   c. Volver al Menu Principal" << endl;
         cin >> opcDV;
-        if (opcDV != "a" && opcDV != "A" && opcDV != "b" && opcDV != "B")
+        if (opcDV != "a" && opcDV != "A" && opcDV != "b" && opcDV != "B" && opcDV != "c" && opcDV != "C")
         {
             cout << "Por favor digite una opcion valida" << endl;
             menuDefVent();
@@ -146,6 +155,10 @@ class MenuPrinc
                 cout << "Eliminar ventanilla" << endl;
                 // eliminar un tipo de ventanilla
             }
+            if (opcDV == "c" || opcDV == "C")
+            {
+                menuPrin();
+            }
         }
     }
 
@@ -158,8 +171,10 @@ class MenuPrinc
         cout << "   a. Agregar un nuevo tipo de servicio." << endl;
         cout << "   b. Eliminar un tipo de servicio." << endl;
         cout << "   c. Reordenar." << endl;
+        cout << "   d. Volver al Menu Principal." << endl;
         cin >> opcDS;
-        if (opcDS != "a" && opcDS != "A" && opcDS != "b" && opcDS != "B" && opcDS != "c" && opcDS != "C")
+        if (opcDS != "a" && opcDS != "A" && opcDS != "b" && opcDS != "B" && opcDS != "c" && opcDS != "C"
+            && opcDS != "d" && opcDS != "D")
         {
             cout << "Por favor digite una opcion valida" << endl;
             menuDefServic();
@@ -185,6 +200,13 @@ class MenuPrinc
                         cout << "Reordenar la lista" << endl;
                         // reordenar los elementos en la lista de servicios
                     }
+                    else
+                    {
+                        if (opcDS == "d" || opcDS == "D")
+                        {
+                            menuPrin();
+                        }
+                    }
                 }
             }
         }
@@ -201,9 +223,10 @@ class MenuPrinc
         cout << "   c. Total de tiquetes atendidos por ventanilla" << endl;
         cout << "   d. Total de tiquetes dispensados por tipo de transacción" << endl;
         cout << "   e. Total de tiquetes preferenciales dispensados en todo el sistema" << endl;
+        cout << "   f. Volver al Menu Principal." << endl;
         cin >> opcStats;
         if (opcStats != "a" && opcStats != "A" && opcStats != "b" && opcStats != "B" && opcStats != "c" && opcStats != "C"
-            && opcStats != "d" && opcStats != "D" && opcStats != "e" && opcStats != "E")
+            && opcStats != "d" && opcStats != "D" && opcStats != "e" && opcStats != "E" && opcStats != "f" && opcStats != "F")
         {
             cout << "Por favor digite una opcion valida" << endl;
             menuStats();
@@ -237,6 +260,13 @@ class MenuPrinc
                             if (opcStats == "e" || opcStats == "E")
                             {
                                 cout << "Total de tiquetes preferenciales dispensados en todo el sistema" << endl;
+                            }
+                            else
+                            {
+                                if (opcStats == "f" || opcStats == "F")
+                                {
+                                    cout << "Total de tiquetes preferenciales dispensados en todo el sistema" << endl;
+                                }
                             }
                         }
                     }
