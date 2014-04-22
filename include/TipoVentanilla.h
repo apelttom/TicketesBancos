@@ -25,25 +25,27 @@ class TipoVentanilla
             nombre = pNombre;
             cantVentAsoc = pCantV_A;
             //servicio = pServicio;
-            LinkedList <Ventanilla>* ventanillas = new LinkedList<Ventanilla>();
-            Queue <Usuario>* usuariosNormales = new Queue<Usuario>();
-            Queue <Usuario>* usuariosPrior = new Queue<Usuario>();                   //cola solo de  usuarios preferenciales
-            CrearVentanillas(cantVentAsoc);
+            LinkedList<Ventanilla>* ventanillas = new LinkedList<Ventanilla>();
+            //Queue<Usuario>* usuariosNormales = new Queue<Usuario>();
+            //Queue<Usuario>* usuariosPrior = new Queue<Usuario>();                   //cola solo de  usuarios preferenciales
+            //CrearVentanillas(cantVentAsoc);
         }
         virtual ~TipoVentanilla();
 
 
         // crea la cantidad de ventanillas que se pasaron como parametro en el constructor
-        void CrearVentanillas(int pCantV)
+        /*void CrearVentanillas(int pCantV)
         {
-            int cont = 1;
-            for (int cant = pCantV; cant != 0; cant--)
+            int cantV = pCantV;
+            for (int cont = 1; cont < cantV; cont++)
             {
-                //string iD = (servicio->getTypo()) + cont;    parchar contador
-                Ventanilla tmp = new Ventanilla(ID);
+                char *intStr = itoa(cont);
+                string str = string(intStr);
+                string iD = (servicio->getTypo()) + str;
+                Ventanilla * tmp = new Ventanilla(ID);
                 ventanillas->insert(tmp);
             }
-        }
+        }*/
 
 };
 
