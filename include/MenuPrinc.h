@@ -1,13 +1,11 @@
 #ifndef MENUPRINC_H
 #define MENUPRINC_H
 
-<<<<<<< HEAD
 #include <cstdlib>
 #include "Servicio.h"
-=======
+
 #include "TipoVentanilla.h"
 
->>>>>>> 40aad353b0d4b8201ad1973021c98f4dc3b5d198
 class MenuPrinc
 {
     protected:

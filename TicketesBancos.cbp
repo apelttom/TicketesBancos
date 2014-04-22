@@ -38,6 +38,11 @@
 		<Unit filename="include/MenuPrinc.h" />
 		<Unit filename="include/Node.h" />
 		<Unit filename="include/Queue.h" />
+		<Unit filename="include/Servicio.h" />
+		<Unit filename="include/Servicios.h" />
+		<Unit filename="include/TipoVentanilla.h" />
+		<Unit filename="include/Usuario.h" />
+		<Unit filename="include/Ventanilla.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
