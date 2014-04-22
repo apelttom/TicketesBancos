@@ -1,7 +1,8 @@
 #ifndef MENUPRINC_H
 #define MENUPRINC_H
 
-
+#include <cstdlib>
+#include "Servicio.h"
 class MenuPrinc
 {
     protected:
@@ -168,7 +169,23 @@ class MenuPrinc
         {
             if (opcDS == "a" || opcDS == "A")
             {
-                cout << "agregar un tipo de servicio" << endl;
+                //Borar cuando todo esta listo
+//                cout << "agregar un tipo de servicio" << endl;
+
+                //TEMPORARY: TODO Class Banco controller
+                string servicioNombre;
+                string servicioDesc;
+                string servicioTypo;
+                cout << "Por favor entrega un nombre de nuevo servicio:" << endl;
+                cin >> servicioNombre;
+                cout << "Por favor entrega un typo de nuevo servicio:" << endl;
+                cin >> servicioTypo;
+                cout << "Por favor entrega una descripcion de nuevo servicio:" << endl;
+                //TODO not working with whole sentance REPAIR
+                cin >> servicioDesc;
+                Servicio * nuevoServicio = new Servicio(servicioNombre,servicioTypo,servicioDesc);
+                cout << *nuevoServicio << endl;
+                delete nuevoServicio;
                 //Agrega un nuevo tipo de servicio con su descripcion y tipo de ventana asignada
             }
             else
