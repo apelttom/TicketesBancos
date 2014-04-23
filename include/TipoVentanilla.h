@@ -56,7 +56,7 @@ class TipoVentanilla
                 stream << cont;
                 iD = stream.str();
                 Ventanilla * tmp = new Ventanilla(iD);
-                ventanillas->insert(tmp);
+                ventanillas->insert(*tmp);
             }
         }
 

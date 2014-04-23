@@ -10,6 +10,7 @@ class MenuPrinc
 {
     protected:
     private:
+        Servicios *servicios;
     public:
         MenuPrinc() {}
         virtual ~MenuPrinc() {}
@@ -17,6 +18,7 @@ class MenuPrinc
     //plantilla de menu
     void menuPrin()
     {
+        servicios = new Servicios();
         //system("pause");
         //system("cls");
         int opc;
@@ -167,7 +169,7 @@ class MenuPrinc
 
     void menuDefServic()
     {
-        system("cls");
+//        system("cls");
         string opcDS;
         cout << "Usted se encuentra en el menu para definir servicios disponibles." << endl;
         cout << "Por favor. Digite la letra de la opcion que desea: " << endl;
@@ -201,7 +203,9 @@ class MenuPrinc
                 //TODO not working with whole sentance REPAIR
                 cin >> servicioDesc;
                 Servicio * nuevoServicio = new Servicio(servicioNombre,servicioTypo,servicioDesc);
-                cout << *nuevoServicio << endl;
+//                cout << *nuevoServicio << endl;
+                servicios->agregarServicio(*nuevoServicio);
+                servicios->imprimeServicios();
                 delete nuevoServicio;
                 //Agrega un nuevo tipo de servicio con su descripcion y tipo de ventana asignada
             }
@@ -211,6 +215,11 @@ class MenuPrinc
                 {
                     cout << "Eliminar servicio" << endl;
                     // eliminar un tipo de servicio
+                    string servicioNombre;
+                    cout << "Por favor entrega un nombre de nuevo servicio:" << endl;
+                    cin >> servicioNombre;
+                    servicios->borarServicio(servicioNombre);
+                    cout << "Sucessfully deleted service \"" << servicioNombre << "\"" << endl;
                 }
                 else
                 {

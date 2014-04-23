@@ -56,7 +56,8 @@ class LinkedList
         // Inserta un elemento en el final de la lista
         void append(E pElement)
         {
-            head ->next = new Node<E>(pElement, head -> next);
+            tail->next = new Node<E>(pElement, NULL);
+            tail = tail->next;
             size++;
         }
         // Elimina el elemento actual, si no hay elemento levanta una excepción
@@ -66,12 +67,13 @@ class LinkedList
             {
                 throw runtime_error("No element to remove");
             }
-            Node<E> * tmp = current -> next;
-            current -> next() = tmp->next;
-            E element = tmp->getElement();
+            Node<E> * tmp = current->next;
+            E result = tmp->element;
+            if(tmp == tail) tail = current;
+            current->next = tmp->next;
             delete tmp;
             size --;
-            return element;
+            return result;
         }
         // Elimina todos los elementos de la lista e inicializa el nodo especial
         void clear()

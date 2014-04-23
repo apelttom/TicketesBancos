@@ -6,15 +6,15 @@
 class Servicios
 {
     private:
-        LinkedList<Servicios> *servicios;
+        LinkedList<Servicio> *servicios;
 
     public:
         Servicios(){
-            servicios = new LinkedList<Servicios>();
+            servicios = new LinkedList<Servicio>();
         }
 
         Servicios(Servicio& pServicio){
-            servicios = new LinkedList<Servicios>();
+            servicios = new LinkedList<Servicio>();
             servicios->append(pServicio);
         }
 
@@ -22,22 +22,27 @@ class Servicios
             servicios->~LinkedList();
         }
 
-        void agregarServicio(Servicio& nuevo){
-            servicios->append(nuevo);
+        void agregarServicio(Servicio& serv){
+            servicios->append(serv);
         }
 
-/*
-        Servicio borarServicio(string nombre){
+        Servicio borarServicio(string nombre) throw (runtime_error){
             servicios->goToStart();
-            for(;servicios->getPos()+1<servicios->getSize();servicios->next()){
-                Servicio temp = (Servicio) servicios->getElement();
-                if(temp->getNombre().compare(nombre)==0){
-                    servicios->remove();
-                    return temp;
+            for(;servicios->getPos()<servicios->getSize();servicios->next()){
+                Servicio temp = servicios->getElement();
+                if(temp.getNombre().compare(nombre)==0){
+                    return servicios->remove();
                 }
             }
+            throw runtime_error("There is no such service in the list.");
+        }
 
-        } */
+        void imprimeServicios(){
+            servicios->goToStart();
+            for(;servicios->getPos()<servicios->getSize();servicios->next()){
+                cout << servicios->getElement() << endl;
+            }
+        }
 
 };
 

@@ -9,6 +9,12 @@ class Servicio{
         string descripcion;
 
     public:
+        Servicio(){
+            nombre = "Undefined";
+            typo = "Undefined";
+            descripcion = "Undefined";
+        }
+
         Servicio(string pNombre, string pTypo, string pDescripcion){
             nombre = pNombre;
             typo = pTypo;
@@ -22,8 +28,16 @@ class Servicio{
             return nombre;
         }
 
+        void setNombre(string pNombre){
+            nombre = pNombre;
+        }
+
         string getTypo() const{
             return typo;
+        }
+
+        void setTypo(string pTypo){
+            typo = pTypo;
         }
 
         string getDescripcion() const{
