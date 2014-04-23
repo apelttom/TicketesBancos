@@ -39,7 +39,9 @@ class LinkedList
         ~LinkedList()
         {
             clear();
-            delete head, current, tail;
+            delete head;
+            delete current;
+            delete tail;
         }
         // Inserta un elemento en la posición actual
         void insert(E pElement)

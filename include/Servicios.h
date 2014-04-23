@@ -19,24 +19,25 @@ class Servicios
         }
 
         ~Servicios(){
-            servicios.~LinkedList();
+            servicios->~LinkedList();
         }
 
         void agregarServicio(Servicio& nuevo){
             servicios->append(nuevo);
         }
 
-
-        Servicios borarServicio(String nombre){
+/*
+        Servicio borarServicio(string nombre){
             servicios->goToStart();
             for(;servicios->getPos()+1<servicios->getSize();servicios->next()){
-                Servicio temp = servicios->getElement();
+                Servicio temp = (Servicio) servicios->getElement();
                 if(temp->getNombre().compare(nombre)==0){
                     servicios->remove();
-                    break;
+                    return temp;
                 }
             }
-        }
+
+        } */
 
 };
 
