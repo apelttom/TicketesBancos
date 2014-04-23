@@ -9,6 +9,9 @@
 #include "Servicios.h"
 #include "Servicio.h"
 
+#include <sstream>
+#include <string>
+
 using namespace std;
 
 
@@ -44,9 +47,14 @@ class TipoVentanilla
             int cantV = pCantV;
             for (int cont = 1; cont < cantV; cont++)
             {
-                char *intStr = itoa(cont);
+                /*char *intStr = itoa(cont);
                 string str = string(intStr);
                 string iD = (servicio.getTypo()) + str;
+                */
+                stringstream stream;
+                string iD;
+                stream << cont;
+                iD = stream.str();
                 Ventanilla * tmp = new Ventanilla(iD);
                 ventanillas->insert(tmp);
             }

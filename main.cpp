@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <sstream>
+#include <string>
+
 using namespace std;
 
 int main()
@@ -41,6 +44,18 @@ int main()
     cout << cola->getFrontValue()<< endl;
     cout << "Imprimir cola " << endl;
     cola->imprimirCola();
+
+    cout << "////////////////////////////////////////////////////////////////////" << endl;
+
+    int cont = 29;
+    stringstream stream;
+    string iD;
+    stream << cont;
+    iD = stream.str();
+    iD += "ASC";
+    cout << "EL convertido es: " << iD << endl;
+
+    cout << "////////////////////////////////////////////////////////////////////" << endl;
 
     // prueba de menu princ
     MenuPrinc * tmp = new MenuPrinc();
