@@ -6,7 +6,7 @@
 class Servicios
 {
     private:
-        LinkedList<Servicio> *servicios;
+        LinkedList<Servicios> *servicios;
 
     public:
         Servicios(){
@@ -19,7 +19,7 @@ class Servicios
         }
 
         ~Servicios(){
-            servicios->~LinkedList;
+            servicios.~LinkedList();
         }
 
         void agregarServicio(Servicio& nuevo){

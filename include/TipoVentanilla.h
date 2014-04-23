@@ -5,8 +5,12 @@
 #include "LinkedList.h"
 #include "Queue.h"
 #include "Ventanilla.h"
+#include "Tiquetes.h"
+#include "Servicios.h"
+#include "Servicio.h"
 
 using namespace std;
+
 
 template <typename E>
 class TipoVentanilla
@@ -16,7 +20,7 @@ class TipoVentanilla
         string descripcion;
         string nombre;              //codigo de la ventanilla
         int cantVentAsoc;           // Numero de ventanillas que estan abiertas de este tipo
-        //Servicio servicio;
+        Servicio servicio;
     public:
         // El constructor recibe una descripcion sobre que va a hacer
         TipoVentanilla(string pDesc, string pNombre, int pCantV_A)
@@ -26,26 +30,27 @@ class TipoVentanilla
             cantVentAsoc = pCantV_A;
             //servicio = pServicio;
             LinkedList<Ventanilla>* ventanillas = new LinkedList<Ventanilla>();
-            //Queue<Usuario>* usuariosNormales = new Queue<Usuario>();
-            //Queue<Usuario>* usuariosPrior = new Queue<Usuario>();                   //cola solo de  usuarios preferenciales
-            //CrearVentanillas(cantVentAsoc);
+            Queue<Tiquetes>* tiquetesNormales = new Queue<Tiquetes>();
+            Queue<Tiquetes>* tiquetesPrior = new Queue<Tiquetes>();                   //cola solo de  usuarios preferenciales
+            CrearVentanillas(cantVentAsoc, ventanillas);
         }
         virtual ~TipoVentanilla();
 
 
         // crea la cantidad de ventanillas que se pasaron como parametro en el constructor
-        /*void CrearVentanillas(int pCantV)
+        void CrearVentanillas(int pCantV, LinkedList <Ventanilla>* pVentanillas)
         {
+            LinkedList<Ventanilla>* ventanillas = pVentanillas;
             int cantV = pCantV;
             for (int cont = 1; cont < cantV; cont++)
             {
                 char *intStr = itoa(cont);
                 string str = string(intStr);
-                string iD = (servicio->getTypo()) + str;
-                Ventanilla * tmp = new Ventanilla(ID);
+                string iD = (servicio.getTypo()) + str;
+                Ventanilla * tmp = new Ventanilla(iD);
                 ventanillas->insert(tmp);
             }
-        }*/
+        }
 
 };
 

@@ -5,7 +5,7 @@
 #include <stdexcept>
 using namespace std;
 
-template <typename E>
+
 class Ventanilla
 {
     protected:
