@@ -155,20 +155,18 @@ class MenuPrinc
         {
             if (opcDV == "a" || opcDV == "A")
             {
-                char desc[30];
                 string nombre;
                 string codigo;
                 int cantVent;
                 cout << "agregar ventanilla" << endl;
                 cout << "Por favor Digite una descripcion para un nuevo tipo de ventanilla" << endl;
-                cin.getline(desc, 30);
-                cout << desc;
-                string descripcion(desc);
+                cin.ignore();
+                getline(cin, nombre);
                 cout << "Por favor Digite el codigo que desea que tenga el tipo de ventanilla" << endl;
                 cin >> codigo;
                 cout << "Por favor Digite la cantidad de ventanillas para este tipo" << endl;
                 cin >> cantVent;
-                TipoVentanilla * tipoVent = new TipoVentanilla(descripcion, codigo, cantVent);
+                TipoVentanilla * tipoVent = new TipoVentanilla(nombre, codigo, cantVent);
                     //Agrega un nuevo tipo de ventanillas con su descripción, código y cantidad.
             }
             if (opcDV == "b" || opcDV == "B")
