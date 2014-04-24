@@ -19,8 +19,25 @@ class MenuPrinc
         MenuPrinc() {}
         virtual ~MenuPrinc() {}
 
+    enum OPCION_ELEGIDA
+        {
+        VER_ESTADO,
+        SOLICITAR_TIQUETE,
+        ATENDER,
+        ADMINISTRACION,
+        ESTADISTICAS,
+        SALIR,
+        AGREGAR_VENTANILLA,
+        ELIMINAR_VENTANILLA,
+        AGREGAR_SERVICIO,
+        ELIMINAR_SERVICIO,
+        REORDENAR_SERVICIOS,
+        MENU_ANTERIOR,
+        ERROR
+        };
+
     //plantilla de menu
-    void menuPrin()
+    OPCION_ELEGIDA menuPrin()
     {
         //system("pause");
         //system("cls");
@@ -37,7 +54,7 @@ class MenuPrinc
         if (opc > 6 || opc == 0)
         {
             cout << "Por favor digite una opcion valida" << endl;
-            menuPrin();
+            return menuPrin();
         }
         else
         {
@@ -45,28 +62,34 @@ class MenuPrinc
             {
                 case 1:
                     cout << "Debe mostrar los tipos de ventanillas existentes, la cantidad de 	ventanillas definidas para cada tipo y los códigos de los tiquetes presentes en las diferentes colas." << endl;
-                    break;
+                    return VER_ESTADO;
                 case 2:
-                    menuSolicTiquet();
+//                    menuSolicTiquet();
+                    return SOLICITAR_TIQUETE;
                     break;
                 case 3:
                     cout << "Proceso de atender personas" << endl;
+                    return ATENDER;
                     break;
                 case 4:
-                    menuAdmin();
+//                    menuAdmin();
+                    return ADMINISTRACION;
                     break;
                 case 5:
-                    menuStats();
+//                    menuStats();
+                    return ESTADISTICAS;
                     break;
                 case 6:
-                    exit(0);
+                    return SALIR;
+//                    exit(0);
                 default:
-                    menuPrin();
+                    return menuPrin();
             }
         }
+        return ERROR;
     }
 
-    void menuSolicTiquet()
+    OPCION_ELEGIDA menuSolicTiquet()
     {
         system("cls");
         string opcST;
@@ -79,7 +102,7 @@ class MenuPrinc
         if (opcST != "a" && opcST != "A" && opcST != "b" && opcST != "B" && opcST != "c" && opcST != "C")
         {
             cout << "Por favor digite una opcion valida" << endl;
-            menuSolicTiquet();
+            return menuSolicTiquet();
         }
         else
         {
@@ -93,12 +116,13 @@ class MenuPrinc
             }
             if (opcST == "c" || opcST == "C")
             {
-                menuPrin();
+                return MENU_ANTERIOR;
             }
         }
+        return ERROR;
     }
 
-    void menuAdmin()
+    OPCION_ELEGIDA menuAdmin()
     {
         system("cls");
         string opcAD;
@@ -106,37 +130,38 @@ class MenuPrinc
         cout << "Por favor. Digite la letra de la opcion que desea: " << endl;
         cout << "   a. Definir tipos de ventanillas" << endl;
         cout << "   b. Definir servicios disponibles" << endl;
-        cout << "   c. Volver al Menu Principal" << endl;
+        cout << "   c. Volver al Menu Principal." << endl;
         cin >> opcAD;
         if (opcAD != "a" && opcAD != "A" && opcAD != "b" && opcAD != "B" && opcAD != "c" && opcAD != "C")
         {
             cout << "Por favor digite una opcion valida" << endl;
-            menuAdmin();
+            return menuAdmin();
         }
         else
         {
             if (opcAD == "a" || opcAD == "A")
             {
-                menuDefVent();
+                return menuDefVent();
             }
             else
             {
                 if (opcAD == "b" || opcAD == "B")
                 {
-                    menuDefServic();
+                    return menuDefServic();
                 }
                 else
                 {
                     if (opcAD == "c" || opcAD == "C")
                     {
-                        menuPrin();
+                        return MENU_ANTERIOR;
                     }
                 }
             }
         }
+        return ERROR;
     }
 
-    void menuDefVent()
+    OPCION_ELEGIDA menuDefVent()
     {
         system("cls");
         string opcDV;
@@ -144,7 +169,7 @@ class MenuPrinc
         cout << "Por favor. Digite la letra de la opcion que desea: " << endl;
         cout << "   a. Agregar un nuevo tipo de ventanilla." << endl;
         cout << "   b. Eliminar un tipo de ventanilla" << endl;
-        cout << "   c. Volver al Menu Principal" << endl;
+        cout << "   c. Volver al Menu Principal." << endl;
         cin >> opcDV;
         if (opcDV != "a" && opcDV != "A" && opcDV != "b" && opcDV != "B" && opcDV != "c" && opcDV != "C")
         {
@@ -155,33 +180,23 @@ class MenuPrinc
         {
             if (opcDV == "a" || opcDV == "A")
             {
-                string nombre;
-                string codigo;
-                int cantVent;
-                cout << "agregar ventanilla" << endl;
-                cout << "Por favor Digite una descripcion para un nuevo tipo de ventanilla" << endl;
-                cin.ignore();
-                getline(cin, nombre);
-                cout << "Por favor Digite el codigo que desea que tenga el tipo de ventanilla" << endl;
-                cin >> codigo;
-                cout << "Por favor Digite la cantidad de ventanillas para este tipo" << endl;
-                cin >> cantVent;
-                TipoVentanilla * tipoVent = new TipoVentanilla(nombre, codigo, cantVent);
-                    //Agrega un nuevo tipo de ventanillas con su descripción, código y cantidad.
+                return AGREGAR_VENTANILLA;
             }
             if (opcDV == "b" || opcDV == "B")
             {
                 cout << "Eliminar ventanilla" << endl;
                 // eliminar un tipo de ventanilla
+                return ELIMINAR_VENTANILLA;
             }
             if (opcDV == "c" || opcDV == "C")
             {
-                menuPrin();
+                return MENU_ANTERIOR;
             }
         }
+        return ERROR;
     }
 
-    void menuDefServic()
+    OPCION_ELEGIDA menuDefServic()
     {
         system("cls");
         string opcDS;
@@ -202,42 +217,13 @@ class MenuPrinc
         {
             if (opcDS == "a" || opcDS == "A")
             {
-                //Borar cuando todo esta listo
-//                cout << "agregar un tipo de servicio" << endl;
-
-                //TEMPORARY: TODO Class Banco controller
-                /*
-                string servicioNombre;
-                string servicioDesc;
-                string servicioTypo;
-                cout << "Por favor entrega un nombre de nuevo servicio:" << endl;
-                cin >> servicioNombre;
-                cout << "Por favor entrega un typo de nuevo servicio:" << endl;
-                cin >> servicioTypo;
-                cout << "Por favor entrega una descripcion de nuevo servicio:" << endl;
-                //TODO not working with whole sentance REPAIR
-                cin >> servicioDesc;
-                Servicio * nuevoServicio = new Servicio(servicioNombre,servicioTypo,servicioDesc);
-//                cout << *nuevoServicio << endl;
-                servicios->agregarServicio(*nuevoServicio);
-                servicios->imprimeServicios();
-                delete nuevoServicio;
-                //Agrega un nuevo tipo de servicio con su descripcion y tipo de ventana asignada
-                */
+                return AGREGAR_SERVICIO;
             }
             else
             {
                 if (opcDS == "b" || opcDS == "B")
                 {
-                    /*
-                    cout << "Eliminar servicio" << endl;
-                    // eliminar un tipo de servicio
-                    string servicioNombre;
-                    cout << "Por favor entrega un nombre de nuevo servicio:" << endl;
-                    cin >> servicioNombre;
-                    servicios->borarServicio(servicioNombre);
-                    cout << "Sucessfully deleted service \"" << servicioNombre << "\"" << endl;
-                    */
+                    return ELIMINAR_SERVICIO;
                 }
                 else
                 {
@@ -245,17 +231,19 @@ class MenuPrinc
                     {
                         cout << "Reordenar la lista" << endl;
                         // reordenar los elementos en la lista de servicios
+                        return REORDENAR_SERVICIOS;
                     }
                     else
                     {
                         if (opcDS == "d" || opcDS == "D")
                         {
-                            menuPrin();
+                            return MENU_ANTERIOR;
                         }
                     }
                 }
             }
         }
+        return ERROR;
     }
 
     void menuStats()
