@@ -10,7 +10,6 @@ class MenuPrinc
 {
     protected:
     private:
-        Servicios *servicios;
     public:
         MenuPrinc() {}
         virtual ~MenuPrinc() {}
@@ -18,7 +17,6 @@ class MenuPrinc
     //plantilla de menu
     void menuPrin()
     {
-        servicios = new Servicios();
         //system("pause");
         //system("cls");
         int opc;
