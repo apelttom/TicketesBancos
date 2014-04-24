@@ -47,6 +47,7 @@ int main()
 
     cout << "////////////////////////////////////////////////////////////////////" << endl;
 
+    // De int a String
     int cont = 29;
     stringstream stream;
     string iD;
@@ -54,6 +55,19 @@ int main()
     iD = stream.str();
     iD += "ASC";
     cout << "EL convertido es: " << iD << endl;
+
+    //De char a String
+    char arr[ ] = "This is a test";
+    string str(arr);
+    str += " si sirvio";
+    cout << "El convertido de char a string es: " << str << endl;
+
+    /* guardar un char con espacios */
+    char pruebaEsp[90];
+    cout << "digite una palabra cn espacios: " << endl;
+    cin.getline(pruebaEsp, 30);
+    cout << "esta es: " << pruebaEsp << endl;
+
 
     cout << "////////////////////////////////////////////////////////////////////" << endl;
 

@@ -3,9 +3,14 @@
 
 #include <cstdlib>
 #include "Servicio.h"
-
 #include "TipoVentanilla.h"
+#include <string.h>
+#include <iostream>
+#include <stdio.h>
+#include <sstream>
+#include <string>
 
+using namespace std;
 class MenuPrinc
 {
     protected:
@@ -150,13 +155,15 @@ class MenuPrinc
         {
             if (opcDV == "a" || opcDV == "A")
             {
-                string descripcion;
+                char desc[30];
                 string nombre;
                 string codigo;
                 int cantVent;
                 cout << "agregar ventanilla" << endl;
                 cout << "Por favor Digite una descripcion para un nuevo tipo de ventanilla" << endl;
-                cin >> descripcion;
+                cin.getline(desc, 30);
+                cout << desc;
+                string descripcion(desc);
                 cout << "Por favor Digite el codigo que desea que tenga el tipo de ventanilla" << endl;
                 cin >> codigo;
                 cout << "Por favor Digite la cantidad de ventanillas para este tipo" << endl;
@@ -201,6 +208,7 @@ class MenuPrinc
 //                cout << "agregar un tipo de servicio" << endl;
 
                 //TEMPORARY: TODO Class Banco controller
+                /*
                 string servicioNombre;
                 string servicioDesc;
                 string servicioTypo;
@@ -217,11 +225,13 @@ class MenuPrinc
                 servicios->imprimeServicios();
                 delete nuevoServicio;
                 //Agrega un nuevo tipo de servicio con su descripcion y tipo de ventana asignada
+                */
             }
             else
             {
                 if (opcDS == "b" || opcDS == "B")
                 {
+                    /*
                     cout << "Eliminar servicio" << endl;
                     // eliminar un tipo de servicio
                     string servicioNombre;
@@ -229,6 +239,7 @@ class MenuPrinc
                     cin >> servicioNombre;
                     servicios->borarServicio(servicioNombre);
                     cout << "Sucessfully deleted service \"" << servicioNombre << "\"" << endl;
+                    */
                 }
                 else
                 {

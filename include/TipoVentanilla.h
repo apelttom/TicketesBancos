@@ -30,6 +30,7 @@ class TipoVentanilla
             descripcion = pDesc;
             codigo = pCodigo;
             cantVentAsoc = pCantV_A;
+            cout << "Esta es la descripcion q me esta guardando: " << descripcion << endl;
             //servicio = pServicio;
             LinkedList<Ventanilla>* ventanillas = new LinkedList<Ventanilla>();
             //Queue<Tiquetes>* tiquetesNormales = new Queue<Tiquetes>();
