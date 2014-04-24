@@ -157,13 +157,20 @@ class MenuPrinc
             {
                 string nombre;
                 string codigo;
+                int opcServ;
+                Servicios * serv;
                 int cantVent;
                 cout << "agregar ventanilla" << endl;
+                cout << "Por favor elija un servicio de la siguente lista" << endl;
+                serv->imprimeServicios();
+                cin >> opcServ;
+                opcServ--;
+                Servicio servPtr;
+                servPtr = serv->getServElement(opcServ);
+                codigo = servPtr.getTypo();
                 cout << "Por favor Digite una descripcion para un nuevo tipo de ventanilla" << endl;
                 cin.ignore();
                 getline(cin, nombre);
-                cout << "Por favor Digite el codigo que desea que tenga el tipo de ventanilla" << endl;
-                cin >> codigo;
                 cout << "Por favor Digite la cantidad de ventanillas para este tipo" << endl;
                 cin >> cantVent;
                 TipoVentanilla * tipoVent = new TipoVentanilla(nombre, codigo, cantVent);

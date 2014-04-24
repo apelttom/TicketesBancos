@@ -34,7 +34,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/BancoController.h" />
 		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/MenuPrinc.h" />
 		<Unit filename="include/Node.h" />
@@ -42,7 +41,7 @@
 		<Unit filename="include/Servicio.h" />
 		<Unit filename="include/Servicios.h" />
 		<Unit filename="include/TipoVentanilla.h" />
-		<Unit filename="include/Usuario.h" />
+		<Unit filename="include/Tiquetes.h" />
 		<Unit filename="include/Ventanilla.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>

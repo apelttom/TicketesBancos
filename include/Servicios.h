@@ -26,6 +26,12 @@ class Servicios
             servicios->append(serv);
         }
 
+        Servicio getServElement(int pos)
+        {
+            servicios->goToPos(pos);
+            return servicios->getElement();
+        }
+
         Servicio borarServicio(string nombre) throw (runtime_error){
             servicios->goToStart();
             for(;servicios->getPos()<servicios->getSize();servicios->next()){
@@ -39,8 +45,8 @@ class Servicios
 
         void imprimeServicios(){
             servicios->goToStart();
-            for(;servicios->getPos()<servicios->getSize();servicios->next()){
-                cout << servicios->getElement() << endl;
+            for(int i = 1;servicios->getPos()<servicios->getSize();servicios->next()){
+                cout << i++ << servicios->getElement() << endl;
             }
         }
 
