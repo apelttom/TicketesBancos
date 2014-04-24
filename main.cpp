@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Queue.h"
 #include "MenuPrinc.h"
+#include "BancoController.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -72,8 +73,10 @@ int main()
     cout << "////////////////////////////////////////////////////////////////////" << endl;
 
     // prueba de menu princ
-    MenuPrinc * tmp = new MenuPrinc();
-    tmp->menuPrin();
+//    MenuPrinc * tmp = new MenuPrinc();
+//    tmp->menuPrin();
+
+    BancoController::getInstance().mainMenu();
 
     return 0;
 }
