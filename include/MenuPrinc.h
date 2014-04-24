@@ -152,7 +152,18 @@ class MenuPrinc
         {
             if (opcDV == "a" || opcDV == "A")
             {
+                string descripcion;
+                string nombre;
+                string codigo;
+                int cantVent;
                 cout << "agregar ventanilla" << endl;
+                cout << "Por favor Digite una descripcion para un nuevo tipo de ventanilla" << endl;
+                cin >> descripcion;
+                cout << "Por favor Digite el codigo que desea que tenga el tipo de ventanilla" << endl;
+                cin >> codigo;
+                cout << "Por favor Digite la cantidad de ventanillas para este tipo" << endl;
+                cin >> cantVent;
+                TipoVentanilla * tipoVent = new TipoVentanilla(descripcion, codigo, cantVent);
                     //Agrega un nuevo tipo de ventanillas con su descripción, código y cantidad.
             }
             if (opcDV == "b" || opcDV == "B")
@@ -169,7 +180,7 @@ class MenuPrinc
 
     void menuDefServic()
     {
-//        system("cls");
+        system("cls");
         string opcDS;
         cout << "Usted se encuentra en el menu para definir servicios disponibles." << endl;
         cout << "Por favor. Digite la letra de la opcion que desea: " << endl;

@@ -15,13 +15,17 @@ class Ventanilla
         //Node <Usuario>* ultimoUsuario;
 
     public:
+        Ventanilla()
+        {
+            iD = "Undefined";
+        }
         Ventanilla(string pID)
         {
             iD = pID;
         }
 
-        virtual ~Ventanilla();
-        virtual void Atender();
+        ~Ventanilla(){}
+        //virtual void Atender();
 
 
 };
