@@ -111,6 +111,7 @@ class LinkedList
         // Mueve la posición actual al índice indicado en el parámetro
         void goToPos(int nPos) throw(range_error)
         {
+            current = head;
             if ((nPos < 0) || (nPos > size))
             {
                 throw range_error("Index out of bounds");

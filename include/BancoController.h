@@ -12,6 +12,7 @@ class BancoController{
     private:
         MenuPrinc *menu;
         Servicios *servicios;
+        LinkedList<TipoVentanilla> * listaTipoVent;
 
         // Private constructor
         BancoController()
@@ -95,7 +96,7 @@ class BancoController{
                 crearVentanilla();
                 break;
             case MenuPrinc::ELIMINAR_VENTANILLA:
-                //TODO programar funcion eliminar ventanilla
+                eliminarVentanilla();//TODO programar funcion eliminar ventanilla
                 break;
             case MenuPrinc::AGREGAR_SERVICIO:
                 crearServicio();
@@ -123,8 +124,9 @@ class BancoController{
             cout << "agregar ventanilla" << endl;
             cout << "Por favor elige un servicio de la siguiente lista" << endl;
             servicios->imprimeServicios();
+            cout << "Digite el numero del servicio" << endl;
             cin >> opcServ;
-            opcServ--;
+            opcServ = opcServ - 1;
             Servicio servPtr;
             servPtr = servicios->getServElement(opcServ);
             codigo = servPtr.getTypo();
@@ -134,8 +136,14 @@ class BancoController{
             cout << "Por favor Digite la cantidad de ventanillas para este tipo" << endl;
             cin >> cantVent;
             TipoVentanilla * tipoVent = new TipoVentanilla(nombre, codigo, cantVent);
+            listaTipoVent->append(*tipoVent);
+            system("pause");
             //Agrega un nuevo tipo de ventanillas con su descripción, código y cantidad.
             administracion(menu->menuDefVent());
+        }
+
+        void eliminarVentanilla()
+        {
         }
 
         void crearServicio()

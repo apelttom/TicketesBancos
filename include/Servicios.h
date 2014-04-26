@@ -29,7 +29,9 @@ class Servicios
         Servicio getServElement(int pos)
         {
             servicios->goToPos(pos);
-            return servicios->getElement();
+            Servicio temp = servicios->getElement();
+            cout << temp << endl;
+            return temp;
         }
 
         Servicio borarServicio(string nombre) throw (runtime_error)

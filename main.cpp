@@ -63,12 +63,12 @@ int main()
     str += " si sirvio";
     cout << "El convertido de char a string es: " << str << endl;
 
-    /* guardar un char con espacios */
+    /* guardar un char con espacios
     char pruebaEsp[90];
     cout << "digite una palabra cn espacios: " << endl;
     cin.getline(pruebaEsp, 30);
     cout << "esta es: " << pruebaEsp << endl;
-
+    */
 
     cout << "////////////////////////////////////////////////////////////////////" << endl;
 

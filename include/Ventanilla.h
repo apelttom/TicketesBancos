@@ -27,6 +27,13 @@ class Ventanilla
         ~Ventanilla(){}
         //virtual void Atender();
 
+        string getID() const{
+            return iD;
+        }
+
+        void setID(string pID){
+            iD = pID;
+        }
 
 };
 
