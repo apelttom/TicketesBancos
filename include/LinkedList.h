@@ -69,6 +69,7 @@ class LinkedList
             }
             Node<E> * tmp = current->next;
             E result = tmp->element;
+            cout << "Removing " << result << endl << "On position: " << getPos() << endl;
             if(tmp == tail) tail = current;
             current->next = tmp->next;
             delete tmp;
@@ -114,9 +115,10 @@ class LinkedList
             {
                 throw range_error("Index out of bounds");
             }
+            goToStart();
             for (int i = nPos; i > 0; i--)
             {
-                current -> next;
+                current = current -> next;
             }
         }
         // Mueve la posición actual al elemento anterior,

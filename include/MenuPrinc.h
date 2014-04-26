@@ -40,7 +40,7 @@ class MenuPrinc
     OPCION_ELEGIDA menuPrin()
     {
         //system("pause");
-        //system("cls");
+        system("cls");
         int opc;
         cout << "Bienvenido al Menu Principal del Sistema!!" << endl;
         cout << "Por favor. Digite el número de la opcion que desea: " << endl;
@@ -174,7 +174,7 @@ class MenuPrinc
         if (opcDV != "a" && opcDV != "A" && opcDV != "b" && opcDV != "B" && opcDV != "c" && opcDV != "C")
         {
             cout << "Por favor digite una opcion valida" << endl;
-            menuDefVent();
+            return menuDefVent();
         }
         else
         {
@@ -211,7 +211,7 @@ class MenuPrinc
             && opcDS != "d" && opcDS != "D")
         {
             cout << "Por favor digite una opcion valida" << endl;
-            menuDefServic();
+            return menuDefServic();
         }
         else
         {

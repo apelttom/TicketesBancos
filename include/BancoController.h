@@ -89,7 +89,6 @@ class BancoController{
 
         void administracion(MenuPrinc::OPCION_ELEGIDA userResponse)
         {
-            string foo;
             switch(userResponse)
             {
             case MenuPrinc::AGREGAR_VENTANILLA:
@@ -105,9 +104,7 @@ class BancoController{
                 eliminarServicio();
                 break;
             case MenuPrinc::REORDENAR_SERVICIOS:
-                servicios->imprimeServicios();
-                cin >> foo;
-                administracion(menu->menuAdmin());
+                reordenar();
                 break;
             default:
                 errorHandler(userResponse);
@@ -152,10 +149,13 @@ class BancoController{
             cin >> servicioTypo;
             cout << "Por favor entrega una descripcion de nuevo servicio:" << endl;
             //TODO not working with whole sentance REPAIR
-            cin >> servicioDesc;
-            Servicio * nuevoServicio = new Servicio(servicioNombre,servicioTypo,servicioDesc);servicios->agregarServicio(*nuevoServicio);
+            cin.ignore();
+            getline(cin, servicioDesc);
+            Servicio * nuevoServicio = new Servicio(servicioNombre,servicioTypo,servicioDesc);
+            servicios->agregarServicio(*nuevoServicio);
             servicios->imprimeServicios();
             delete nuevoServicio;
+            system("pause");
             //TODO Agrega un nuevo tipo de servicio con su descripcion y tipo de ventana asignada
             administracion(menu->menuDefServic());
         }
@@ -165,8 +165,37 @@ class BancoController{
             string servicioNombre;
             cout << "Por favor entrega un nombre de nuevo servicio:" << endl;
             cin >> servicioNombre;
-            servicios->borarServicio(servicioNombre);
+            try{
+                servicios->borarServicio(servicioNombre);
+            }
+            catch (exception& e)
+            {
+                cout << "There is no such service in the list." << endl;
+                system("pause");
+                administracion(menu->menuDefServic());
+            }
             cout << "Sucessfully deleted service \"" << servicioNombre << "\"" << endl;
+            system("pause");
+            administracion(menu->menuDefServic());
+        }
+
+        void reordenar()
+        {
+            servicios->imprimeServicios();
+            int pos1;
+            int pos2;
+            cout << "Por favor elige dos servicios cuales serán intercambios." << endl;
+            cout << "Numero de primer servicio para intercambiar: ";  cin >> pos1;
+            cout << "Numero de segundo servicio para intercambiar: ";  cin >> pos2;
+            if(pos1 == pos2){
+                cout << "No se pueden intercambiar los mismos servicios!" << endl;
+                system("pause");
+                administracion(menu->menuDefServic());
+                return;
+            }
+            servicios->reordenarServicios(pos1, pos2);
+            servicios->imprimeServicios();
+            system("pause");
             administracion(menu->menuDefServic());
         }
 };
