@@ -69,7 +69,7 @@ class LinkedList
             }
             Node<E> * tmp = current->next;
             E result = tmp->element;
-            cout << "Removing " << result << endl << "On position: " << getPos() << endl;
+//            cout << "Removing " << result << endl << "On position: " << getPos() << endl;
             if(tmp == tail) tail = current;
             current->next = tmp->next;
             delete tmp;
@@ -167,9 +167,10 @@ class LinkedList
 
         void imprimirLista(LinkedList* lista)
         {
-            for (lista->goToStart(); lista->getPos() < lista->getSize(); lista->next())
+            lista->goToStart();
+            for (int i = 0; lista->getPos() < lista->getSize(); lista->next())
             {
-                cout << lista->getElement() << endl;
+                cout << i++ << " " << lista->getElement() << endl;
             }
         }
 };

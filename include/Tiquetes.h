@@ -10,13 +10,21 @@ class Tiquetes
         string servicio;
         string ventanilla;
     public:
+        Tiquetes()
+        {
+            numero  = "UNDEFINED";
+            servicio = "UNDEFINED";
+            ventanilla = "UNDEFINED";
+        }
         Tiquetes(string pNumero, string pServicio, string pVentanilla)
         {
             numero = pNumero;
             servicio = pServicio;
             ventanilla = pVentanilla;
         }
-        virtual ~Tiquetes();
+        ~Tiquetes()
+        {
+        }
 
 };
 
