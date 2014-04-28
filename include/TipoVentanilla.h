@@ -75,25 +75,17 @@ class TipoVentanilla
         {
             return codigo;
         }
-/*
-        Ventanilla borraTipoVent(string nombre)
+
+        int getCantVentAsoc()
         {
-            ventanillas->goToStart();
-            for(;ventanillas->getPos()<ventanillas->getSize();ventanillas->next()){
-                TipoVentanilla temp = ventanillas->getElement();
-                if(temp.getNombre().compare(nombre)==0){
-                    return ventanillas->remove();
-                }
-            }
+            return cantVentAsoc;
         }
 
-        void imprimeTipoVent(){
-            ventanillas->goToStart();
-            for(int i = 1;ventanillas->getPos()<ventanillas->getSize();ventanillas->next()){
-                cout << i++ << " " << ventanillas->getElement() << endl;
-            }
+        string getDescripcion()
+        {
+            return descripcion;
         }
-*/
+
 };
 
 #endif // TIPOVENTANILLA_H

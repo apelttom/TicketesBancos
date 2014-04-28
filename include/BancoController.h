@@ -222,6 +222,15 @@ class BancoController{
             system("pause");
             administracion(menu->menuDefServic());
         }
+
+        void imprimirTipoVent()
+        {
+            listaTipoVent->goToStart();
+            for (int i = 1; listaTipoVent->getPos()<listaTipoVent->getSize();listaTipoVent->next())
+            {
+                cout << listaTipoVent->getElement() << endl;
+            }
+        }
 };
 
 #endif // BANCOCONTROLLER_H
