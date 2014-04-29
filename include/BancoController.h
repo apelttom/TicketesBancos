@@ -2,7 +2,7 @@
 #define BANCOCONTROLLER_H
 
 #include "MenuPrinc.h"
-
+#include <string>
 /**
  *  This class is a Singleton pattern. We cannot instance it,
  *  we can only obtain one instance by calling getInstance method
@@ -20,6 +20,7 @@ class BancoController
         {
             menu = new MenuPrinc();
             servicios = new Servicios();
+            listaTipoVent = new LinkedList<TipoVentanilla>();
         }
 
         BancoController(BancoController const&); // Don't implement
@@ -145,8 +146,10 @@ class BancoController
             getline(cin, nombre);
             cout << "Por favor Digite la cantidad de ventanillas para este tipo" << endl;
             cin >> cantVent;
-            TipoVentanilla * tipoVent = new TipoVentanilla(nombre, codigo, cantVent);
+            TipoVentanilla * tipoVent = new TipoVentanilla(nombre, codigo, cantVent, servPtr);
             listaTipoVent->append(*tipoVent);
+            cout << listaTipoVent->getSize() << endl;
+            delete tipoVent;
             system("pause");
             //Agrega un nuevo tipo de ventanillas con su descripción, código y cantidad.
             administracion(menu->menuDefVent());
@@ -154,6 +157,19 @@ class BancoController
 
         void eliminarVentanilla()
         {
+            string codigVent;
+            cout << "Por favor ingrese el nombre del tipo de ventanilla que desea eliminar" << endl;
+            cin >> codigVent;
+            listaTipoVent->goToStart();
+            for(;listaTipoVent->getPos()<listaTipoVent->getSize();listaTipoVent->next()){
+                TipoVentanilla temp = listaTipoVent->getElement();
+                if(temp.getCodigo().compare(codigVent)==0){
+                    listaTipoVent->remove();
+                }
+            }
+            cout << "Se elimino el tipo de ventanilla con el codigo: " << codigVent << endl;
+            system("pause");
+            administracion(menu->menuDefVent());
         }
 
         void crearServicio()
@@ -221,6 +237,7 @@ class BancoController
 
         int elegirServicio()
         {
+            int opcServ;
             cout << "Por favor elige un servicio de la siguiente lista" << endl;
             servicios->imprimeServicios();
             cout << "Digite el numero del servicio: ";
@@ -232,7 +249,16 @@ class BancoController
         void empujeEnCola(Servicio servicio, bool priority)
         {
             //TODO implement queue push
-            Tiquetes = new Tiquetes()
+//            Tiquetes  = new Tiquetes()
+        }
+
+        void imprimirTipoVent()
+        {
+            listaTipoVent->goToStart();
+            for (int i = 1; listaTipoVent->getPos()<listaTipoVent->getSize();listaTipoVent->next())
+            {
+                cout << listaTipoVent->getElement() << endl;
+            }
         }
 };
 

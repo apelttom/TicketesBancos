@@ -15,6 +15,11 @@ class Node
         Node(Node* pNext = NULL) {
             next = pNext;
         }
+
+        E getElement()
+        {
+            return element;
+        }
 };
 
 #endif // NODE_H

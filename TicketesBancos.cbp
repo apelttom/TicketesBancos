@@ -43,6 +43,7 @@
 		<Unit filename="include/Servicios.h" />
 		<Unit filename="include/TipoVentanilla.h" />
 		<Unit filename="include/Tiquetes.h" />
+		<Unit filename="include/Usuario.h" />
 		<Unit filename="include/Ventanilla.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
