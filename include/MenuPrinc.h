@@ -23,6 +23,7 @@ class MenuPrinc
         {
         VER_ESTADO,
         SOLICITAR_TIQUETE,
+        SOLICITAR_TIQUETE_PRIORIDAR,
         ATENDER,
         ADMINISTRACION,
         ESTADISTICAS,
@@ -108,11 +109,13 @@ class MenuPrinc
         {
             if (opcST == "a" || opcST == "A")
             {
-                cout << "Mostrar lista de servicios disponibles" << endl;
+//                cout << "Mostrar lista de servicios disponibles" << endl;
+                return SOLICITAR_TIQUETE;
             }
             if (opcST == "b" || opcST == "B")
             {
-                cout <<"Muestra lo mismo que la opcion anterior solo que para preferenciales" << endl;
+//                cout <<"Muestra lo mismo que la opcion anterior solo que para preferenciales" << endl;
+                return SOLICITAR_TIQUETE_PRIORIDAR;
             }
             if (opcST == "c" || opcST == "C")
             {

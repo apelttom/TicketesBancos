@@ -1,16 +1,17 @@
 #ifndef TIQUETES_H
 #define TIQUETES_H
 
+#include "Servicio.h"
 
 class Tiquetes
 {
     protected:
     private:
         string numero;
-        string servicio;
+        Servicio servicio;
         string ventanilla;
     public:
-        Tiquetes(string pNumero, string pServicio, string pVentanilla)
+        Tiquetes(string pNumero, Servicio pServicio, string pVentanilla)
         {
             numero = pNumero;
             servicio = pServicio;

@@ -7,7 +7,8 @@
  *  This class is a Singleton pattern. We cannot instance it,
  *  we can only obtain one instance by calling getInstance method
  */
-class BancoController{
+class BancoController
+{
 
     private:
         MenuPrinc *menu;
@@ -45,7 +46,7 @@ class BancoController{
                 //TODO todavia se tiene que programar
                 break;
             case MenuPrinc::SOLICITAR_TIQUETE:
-                solicitarTiquete();
+                solicitarTiquete(menu->menuSolicTiquet());
                 break;
             case MenuPrinc::ATENDER:
                 //TODO todavia se tiene que programar
@@ -68,21 +69,29 @@ class BancoController{
 
         void errorHandler(MenuPrinc::OPCION_ELEGIDA response)
         {
-            if(response == MenuPrinc::ERROR){
+            if(response == MenuPrinc::ERROR)
+            {
                 cout << "APPLICATION HAVE ENCOUNTERED AN ERROR!";
                 exit(EXIT_FAILURE);
             }
         }
 
-        void solicitarTiquete()
+        void solicitarTiquete(MenuPrinc::OPCION_ELEGIDA userResponse)
         {
-            MenuPrinc::OPCION_ELEGIDA userResponse = menu->menuSolicTiquet();
+            servicios->imprimeServicios();
+            int choosedService = elegirServicio();
             switch(userResponse)
             {
-                // Add more cases here
+            case MenuPrinc::SOLICITAR_TIQUETE:
+                empujeEnCola(servicios->getServElement(choosedService), false);
+                break;
+            case MenuPrinc::SOLICITAR_TIQUETE_PRIORIDAR:
+                empujeEnCola(servicios->getServElement(choosedService), true);
+                break;
             default:
                 errorHandler(userResponse);
-                if(userResponse == MenuPrinc::MENU_ANTERIOR){
+                if(userResponse == MenuPrinc::MENU_ANTERIOR)
+                {
                     mainMenu();
                 }
             }
@@ -105,11 +114,12 @@ class BancoController{
                 eliminarServicio();
                 break;
             case MenuPrinc::REORDENAR_SERVICIOS:
-                reordenar();
+                reordenarServicios();
                 break;
             default:
                 errorHandler(userResponse);
-                if(userResponse == MenuPrinc::MENU_ANTERIOR){
+                if(userResponse == MenuPrinc::MENU_ANTERIOR)
+                {
                     mainMenu();
                 }
             }
@@ -173,7 +183,8 @@ class BancoController{
             string servicioNombre;
             cout << "Por favor entrega un nombre de nuevo servicio:" << endl;
             cin >> servicioNombre;
-            try{
+            try
+            {
                 servicios->borarServicio(servicioNombre);
             }
             catch (exception& e)
@@ -187,7 +198,7 @@ class BancoController{
             administracion(menu->menuDefServic());
         }
 
-        void reordenar()
+        void reordenarServicios()
         {
             servicios->imprimeServicios();
             int pos1;
@@ -195,7 +206,8 @@ class BancoController{
             cout << "Por favor elige dos servicios cuales serán intercambios." << endl;
             cout << "Numero de primer servicio para intercambiar: ";  cin >> pos1;
             cout << "Numero de segundo servicio para intercambiar: ";  cin >> pos2;
-            if(pos1 == pos2){
+            if(pos1 == pos2)
+            {
                 cout << "No se pueden intercambiar los mismos servicios!" << endl;
                 system("pause");
                 administracion(menu->menuDefServic());
@@ -205,6 +217,22 @@ class BancoController{
             servicios->imprimeServicios();
             system("pause");
             administracion(menu->menuDefServic());
+        }
+
+        int elegirServicio()
+        {
+            cout << "Por favor elige un servicio de la siguiente lista" << endl;
+            servicios->imprimeServicios();
+            cout << "Digite el numero del servicio: ";
+            cin >> opcServ;
+            opcServ--;
+            return opcServ;
+        }
+
+        void empujeEnCola(Servicio servicio, bool priority)
+        {
+            //TODO implement queue push
+            Tiquetes = new Tiquetes()
         }
 };
 
