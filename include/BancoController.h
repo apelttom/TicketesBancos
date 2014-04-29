@@ -251,7 +251,7 @@ class BancoController
             //TODO implement queue push
 //            Tiquetes  = new Tiquetes()
         }
-
+/*
         void imprimirTipoVent()
         {
             listaTipoVent->goToStart();
@@ -259,7 +259,7 @@ class BancoController
             {
                 cout << listaTipoVent->getElement() << endl;
             }
-        }
+        }*/
 };
 
 #endif // BANCOCONTROLLER_H
