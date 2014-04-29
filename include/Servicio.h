@@ -45,11 +45,8 @@ class Servicio{
         }
 };
 
-/*
- * TODO make the class working with cout
- */
 std::ostream& operator<<(std::ostream &strm, const Servicio &servicio) {
-  return strm << "Servicio(" << "Nombre = " << servicio.getNombre() << ", " << "Typo = " << servicio.getTypo() << ", " << "Descripcion = " << servicio.getDescripcion() << ")";
+  return strm << "Servicio(" << "Nombre = " << servicio.getNombre() << ", Typo = " << servicio.getTypo() << ", Descripcion = " << servicio.getDescripcion() << ")";
 }
 
 #endif // SERVICIO_H

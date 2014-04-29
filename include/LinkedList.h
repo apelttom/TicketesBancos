@@ -141,10 +141,10 @@ class LinkedList
         // no se mueve si ya se encuentra al final de la lista
         void next()
         {
-            if (current -> next == tail)
-            {
-                cout << "Ya se encuentra al final de la lista" << endl;
-            }
+//            if (current -> next == tail)
+//            {
+//                cout << "Ya se encuentra al final de la lista" << endl;
+//            }
             current = current->next;
         }
         // Obtiene el índice de la posición actual
@@ -170,7 +170,7 @@ class LinkedList
             lista->goToStart();
             for (int i = 0; lista->getPos() < lista->getSize(); lista->next())
             {
-                cout << i++ << " " << lista->getElement() << endl;
+                cout << i++ << ". " << lista->getElement() << endl;
             }
         }
 };

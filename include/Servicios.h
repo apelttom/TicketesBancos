@@ -46,11 +46,9 @@ class Servicios
             throw runtime_error("There is no such service in the list.");
         }
 
-        void imprimeServicios(){
-            servicios->goToStart();
-            for(int i = 1;servicios->getPos()<servicios->getSize();servicios->next()){
-                cout << i++ << " " << servicios->getElement() << endl;
-            }
+        void imprimeServicios()
+        {
+            servicios->imprimirLista(servicios);
         }
 
         /*
