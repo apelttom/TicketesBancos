@@ -9,25 +9,29 @@ class Tiquetes
     private:
         string numero;
         Servicio servicio;
-        string ventanilla;
     public:
 
         Tiquetes()
         {
             numero  = "UNDEFINED";
-            ventanilla = "UNDEFINED";
+            servicio = *(new Servicio());
         }
 
-        Tiquetes(string pNumero, Servicio pServicio, string pVentanilla)
+        Tiquetes(string pNumero, Servicio &pServicio)
         {
             numero = pNumero;
             servicio = pServicio;
-            ventanilla = pVentanilla;
         }
         ~Tiquetes()
         {
         }
 
+        string getNumero() const { return numero; }
+
 };
+
+std::ostream& operator<<(std::ostream &strm, const Tiquetes &tiquete) {
+  return strm << "" << ")";
+}
 
 #endif // TIQUETES_H

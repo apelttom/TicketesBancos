@@ -62,7 +62,6 @@ class MenuPrinc
             switch (opc)
             {
                 case 1:
-                    cout << "Debe mostrar los tipos de ventanillas existentes, la cantidad de 	ventanillas definidas para cada tipo y los códigos de los tiquetes presentes en las diferentes colas." << endl;
                     return VER_ESTADO;
                 case 2:
 //                    menuSolicTiquet();

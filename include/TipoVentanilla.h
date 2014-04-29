@@ -71,21 +71,23 @@ class TipoVentanilla
             }
         }
 
-        string getCodigo()
-        {
-            return codigo;
-        }
+        string getDescription() const { return descripcion; }
 
-        int getCantVentAsoc()
-        {
-            return cantVentAsoc;
-        }
+        string getCodigo(){ return codigo; }
 
-        string getDescripcion()
+        int getCantVentAsoc(){ return cantVentAsoc; }
+
+        void imprimirVentanillas() const
         {
-            return descripcion;
+            ventanillas->imprimirLista(ventanillas);
         }
 
 };
+
+std::ostream& operator<<(std::ostream &strm, const TipoVentanilla &typoVentanilla) {
+    cout << "Grupo de ventanillas(" << "Description = " << typoVentanilla.getDescription() << ") Lista de ventanillas:" << endl;
+    typoVentanilla.imprimirVentanillas();
+    return strm;
+}
 
 #endif // TIPOVENTANILLA_H

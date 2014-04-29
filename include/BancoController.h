@@ -44,7 +44,10 @@ class BancoController
             switch(userResponse)
             {
             case MenuPrinc::VER_ESTADO:
-                //TODO todavia se tiene que programar
+                system("cls");
+                listaTipoVent->imprimirLista(listaTipoVent);
+                system("pause");
+                mainMenu();
                 break;
             case MenuPrinc::SOLICITAR_TIQUETE:
                 solicitarTiquete(menu->menuSolicTiquet());
@@ -137,7 +140,7 @@ class BancoController
             servicios->imprimeServicios();
             cout << "Digite el numero del servicio" << endl;
             cin >> opcServ;
-            opcServ = opcServ - 1;
+            opcServ = opcServ;
             Servicio servPtr;
             servPtr = servicios->getServElement(opcServ);
             codigo = servPtr.getTypo();
@@ -254,11 +257,11 @@ class BancoController
 
         void imprimirTipoVent()
         {
-            listaTipoVent->goToStart();
-            for (int i = 1; listaTipoVent->getPos()<listaTipoVent->getSize();listaTipoVent->next())
-            {
-                cout << listaTipoVent->getElement() << endl;
-            }
+//            listaTipoVent->goToStart();
+//            for (int i = 1; listaTipoVent->getPos()<listaTipoVent->getSize();listaTipoVent->next())
+//            {
+//                cout << listaTipoVent->getElement() << endl;
+//            }
         }
 };
 
