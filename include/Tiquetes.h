@@ -17,7 +17,7 @@ class Tiquetes
             servicio = *(new Servicio());
         }
 
-        Tiquetes(string pNumero, Servicio &pServicio)
+        Tiquetes(string pNumero, const Servicio &pServicio)
         {
             numero = pNumero;
             servicio = pServicio;
@@ -31,7 +31,7 @@ class Tiquetes
 };
 
 std::ostream& operator<<(std::ostream &strm, const Tiquetes &tiquete) {
-  return strm << "" << ")";
+  return strm << "Tiquete(" << tiquete.getNumero() << ")";
 }
 
 #endif // TIQUETES_H

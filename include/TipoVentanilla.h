@@ -22,6 +22,7 @@ class TipoVentanilla
         string descripcion;
         string codigo;              //codigo de la ventanilla
         int cantVentAsoc;           // Numero de ventanillas que estan abiertas de este tipo
+        int tiquetesCont;
         Servicio servicio;
         LinkedList<Ventanilla>* ventanillas;
         Queue<Tiquetes>* tiquetesNormales;
@@ -33,6 +34,7 @@ class TipoVentanilla
             descripcion = "UNDEFINED";
             codigo = "UNDEFINED";
             cantVentAsoc = 0;
+            tiquetesCont = 1;
             ventanillas = new LinkedList<Ventanilla>();
             tiquetesNormales = new Queue<Tiquetes>();
             tiquetesPrior = new Queue<Tiquetes>();
@@ -43,6 +45,7 @@ class TipoVentanilla
             descripcion = pDesc;
             codigo = pCodigo;
             cantVentAsoc = pCantV_A;
+            tiquetesCont = 1;
             servicio = pServicio;
             ventanillas = new LinkedList<Ventanilla>();
             tiquetesNormales = new Queue<Tiquetes>();
@@ -71,22 +74,57 @@ class TipoVentanilla
             }
         }
 
+        void solicitarTiqueteNormal(Tiquetes &tiquete)
+        {
+
+            tiquetesNormales->Enqueue(tiquete);
+        }
+
+        void solicitarTiquetePrior(Tiquetes &tiquete)
+        {
+            tiquetesPrior->Enqueue(tiquete);
+        }
+
+        int getCounter() const
+        {
+            return tiquetesCont;
+        }
+
+        void incrementCounter(){ tiquetesCont++; }
+
         string getDescription() const { return descripcion; }
 
         string getCodigo(){ return codigo; }
 
         int getCantVentAsoc(){ return cantVentAsoc; }
 
+        Servicio const& getServicio() const { return servicio; }
+
         void imprimirVentanillas() const
         {
             ventanillas->imprimirLista(ventanillas);
         }
 
+        void imprimirColaNormal() const
+        {
+            tiquetesNormales->imprimirCola();
+        }
+
+        void imprimirColaPrior() const
+        {
+            tiquetesPrior->imprimirCola();
+        }
+
 };
 
 std::ostream& operator<<(std::ostream &strm, const TipoVentanilla &typoVentanilla) {
-    cout << "Grupo de ventanillas(" << "Description = " << typoVentanilla.getDescription() << ") Lista de ventanillas:" << endl;
+    cout << "Grupo de ventanillas(" << "Description = " << typoVentanilla.getDescription() << ") Lista de ventanillas:" << endl << endl;
     typoVentanilla.imprimirVentanillas();
+    cout << endl;
+    cout << "Cola normal:" << endl;
+    typoVentanilla.imprimirColaNormal();
+    cout << "Cola prioridad:" << endl;
+    typoVentanilla.imprimirColaPrior();
     return strm;
 }
 

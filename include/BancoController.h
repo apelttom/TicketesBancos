@@ -14,6 +14,7 @@ class BancoController
         MenuPrinc *menu;
         Servicios *servicios;
         LinkedList<TipoVentanilla> * listaTipoVent;
+        int tiquetesCounter;
 
         // Private constructor
         BancoController()
@@ -21,6 +22,7 @@ class BancoController
             menu = new MenuPrinc();
             servicios = new Servicios();
             listaTipoVent = new LinkedList<TipoVentanilla>();
+            tiquetesCounter = 0;
         }
 
         BancoController(BancoController const&); // Don't implement
@@ -51,6 +53,8 @@ class BancoController
                 break;
             case MenuPrinc::SOLICITAR_TIQUETE:
                 solicitarTiquete(menu->menuSolicTiquet());
+                system("pause");
+                mainMenu();
                 break;
             case MenuPrinc::ATENDER:
                 //TODO todavia se tiene que programar
@@ -60,7 +64,9 @@ class BancoController
                 break;
             case MenuPrinc::ESTADISTICAS:
                 //TODO estatistica se tiene que programar
-                menu->menuStats();
+                imprimirEstatisticas();
+                system("pause");
+                mainMenu();
                 break;
             case MenuPrinc::SALIR:
                 //EXIT
@@ -82,21 +88,23 @@ class BancoController
 
         void solicitarTiquete(MenuPrinc::OPCION_ELEGIDA userResponse)
         {
-            servicios->imprimeServicios();
-            int choosedService = elegirServicio();
-            switch(userResponse)
+            if(userResponse == MenuPrinc::MENU_ANTERIOR)
             {
-            case MenuPrinc::SOLICITAR_TIQUETE:
-                empujeEnCola(servicios->getServElement(choosedService), false);
-                break;
-            case MenuPrinc::SOLICITAR_TIQUETE_PRIORIDAR:
-                empujeEnCola(servicios->getServElement(choosedService), true);
-                break;
-            default:
-                errorHandler(userResponse);
-                if(userResponse == MenuPrinc::MENU_ANTERIOR)
+                mainMenu();
+            }
+            else
+            {
+                int choosedService = elegirServicio();
+                switch(userResponse)
                 {
-                    mainMenu();
+                case MenuPrinc::SOLICITAR_TIQUETE:
+                    empujeEnCola(servicios->getServElement(choosedService), false);
+                    break;
+                case MenuPrinc::SOLICITAR_TIQUETE_PRIORIDAR:
+                    empujeEnCola(servicios->getServElement(choosedService), true);
+                    break;
+                default:
+                    errorHandler(userResponse);
                 }
             }
         }
@@ -127,6 +135,18 @@ class BancoController
                     mainMenu();
                 }
             }
+        }
+
+        Tiquetes* crearTiquete(TipoVentanilla * typo)
+        {
+            string iD;
+            iD += typo->getServicio().getTypo();
+            int cont = typo->getCounter();
+            typo->incrementCounter();
+            stringstream stream;
+            stream << cont;
+            iD += stream.str();
+            return new Tiquetes(iD, typo->getServicio());
         }
 
         void crearVentanilla()
@@ -245,15 +265,41 @@ class BancoController
             servicios->imprimeServicios();
             cout << "Digite el numero del servicio: ";
             cin >> opcServ;
-            opcServ--;
             return opcServ;
         }
 
         void empujeEnCola(Servicio servicio, bool priority)
         {
-            //TODO implement queue push
-//            Tiquetes  = new Tiquetes()
+            listaTipoVent->goToStart();
+            for (; listaTipoVent->getPos() < listaTipoVent->getSize(); listaTipoVent->next())
+            {
+                TipoVentanilla typoVentanilla = listaTipoVent->getElement();
+                if(typoVentanilla.getServicio().getNombre() == servicio.getNombre()
+                   && typoVentanilla.getServicio().getTypo() == servicio.getTypo()
+                   && typoVentanilla.getServicio().getDescripcion() == servicio.getDescripcion())
+                   {
+                       TipoVentanilla * typoVentPtr = &typoVentanilla;
+                       Tiquetes * nuevoTiquete = crearTiquete(typoVentPtr);
+                        if(priority)
+                        {
+                            typoVentanilla.solicitarTiquetePrior(*nuevoTiquete);
+                            tiquetesCounter++;
+                        }
+                        else
+                        {
+                            typoVentanilla.solicitarTiqueteNormal(*nuevoTiquete);
+                        }
+                        cout << "Tiquete agregado con exito." << endl;
+                        return;
+                   }
+            }
         }
+
+        void imprimirEstatisticas()
+        {
+            cout << "Numero de tiquetes preferencial en la systema: " << tiquetesCounter << endl;
+        }
+
 /*
         void imprimirTipoVent()
         {
