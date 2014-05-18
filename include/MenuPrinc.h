@@ -28,6 +28,8 @@ class MenuPrinc
         ADMINISTRACION,
         ESTADISTICAS,
         SALIR,
+        ATENDER_TIQUETE,
+        ATENDER_TIQUETE_PRIOR,
         AGREGAR_VENTANILLA,
         ELIMINAR_VENTANILLA,
         AGREGAR_SERVICIO,
@@ -84,6 +86,45 @@ class MenuPrinc
 //                    exit(0);
                 default:
                     return menuPrin();
+            }
+        }
+        return ERROR;
+    }
+
+    OPCION_ELEGIDA menuAtender()
+    {
+        system("cls");
+        string opcATD;
+        cout << "Usted se encuentra en el menu de gestion de tiquetes." << endl;
+        cout << "Por favor. Digite la letra de la opcion que desea: " << endl;
+        cout << "   a. Atender Tiquete." << endl;
+        cout << "   b. Atender Tiquete Preferencial." << endl;
+        cout << "   c. Volver al Menu Principal." << endl;
+        cin >> opcATD;
+        if (opcATD != "a" && opcATD != "A" && opcATD != "b" && opcATD != "B" && opcATD != "c" && opcATD != "C")
+        {
+            cout << "Por favor digite una opcion valida" << endl;
+            return menuAtender();
+        }
+        else
+        {
+            if (opcATD == "a" && opcATD == "A")
+            {
+                return ATENDER_TIQUETE;
+            }
+            else
+            {
+                if (opcATD == "b" && opcATD == "B")
+                {
+                    return ATENDER_TIQUETE_PRIOR;
+                }
+                else
+                {
+                    if (opcATD == "c" && opcATD == "C")
+                    {
+                        return MENU_ANTERIOR;
+                    }
+                }
             }
         }
         return ERROR;

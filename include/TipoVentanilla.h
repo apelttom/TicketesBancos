@@ -85,6 +85,15 @@ class TipoVentanilla
             tiquetesPrior->Enqueue(tiquete);
         }
 
+        void atenderTiquete()
+        {
+            tiquetesNormales->Dequeue();
+        }
+
+        void atenderTiquetePrior()
+        {
+            tiquetesPrior->Dequeue();
+        }
         int getCounter() const
         {
             return tiquetesCont;

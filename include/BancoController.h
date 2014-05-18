@@ -58,6 +58,10 @@ class BancoController
                 break;
             case MenuPrinc::ATENDER:
                 //TODO todavia se tiene que programar
+                listaTipoVent->imprimirLista(listaTipoVent);
+                atender(menu->menuAtender());
+                system("pause");
+                mainMenu();
                 break;
             case MenuPrinc::ADMINISTRACION:
                 administracion(menu->menuAdmin());
@@ -86,6 +90,28 @@ class BancoController
             }
         }
 
+        void atender(MenuPrinc::OPCION_ELEGIDA userResponse)
+        {
+            if (userResponse == MenuPrinc::MENU_ANTERIOR)
+            {
+                mainMenu();
+            }
+            else
+            {
+                int choosedVent = elegirServicio();
+                switch(userResponse)
+                {
+                    case MenuPrinc::ATENDER_TIQUETE:
+                        desencolarAT(servicios->getServElement(choosedVent), false);
+                        break;
+                    case MenuPrinc::ATENDER_TIQUETE_PRIOR:
+                        desencolarAT(servicios->getServElement(choosedVent), true);
+                        break;
+                    default:
+                        errorHandler(userResponse);
+                }
+            }
+        }
         void solicitarTiquete(MenuPrinc::OPCION_ELEGIDA userResponse)
         {
             if(userResponse == MenuPrinc::MENU_ANTERIOR)
@@ -266,6 +292,32 @@ class BancoController
             cout << "Digite el numero del servicio: ";
             cin >> opcServ;
             return opcServ;
+        }
+
+        void desencolarAT(Servicio servicio, bool priority)
+        {
+            listaTipoVent->goToStart();
+            for(; listaTipoVent->getPos() < listaTipoVent->getSize(); listaTipoVent->next())
+            {
+                TipoVentanilla tipoVentanilla = listaTipoVent->getElement();
+                if(tipoVentanilla.getServicio().getNombre() == servicio.getNombre()
+                   && tipoVentanilla.getServicio().getTypo() == servicio.getTypo()
+                   && tipoVentanilla.getServicio().getDescripcion() == servicio.getDescripcion())
+                {
+                    TipoVentanilla * tipoVentPt = &tipoVentanilla;
+                    Tiquetes * tiquete;
+                    if (priority)
+                    {
+                        tipoVentanilla.atenderTiquetePrior();
+                    }
+                    else
+                    {
+                        tipoVentanilla.atenderTiquete();
+                    }
+                    cout << "Tiquete agregado con exito." << endl;
+                    return;
+                }
+            }
         }
 
         void empujeEnCola(Servicio servicio, bool priority)
